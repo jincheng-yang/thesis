@@ -27,31 +27,29 @@
 % xjtuthesis-x, please feel free to contact me.
 
 \documentclass[
-bachelor,
-%bigskip, % sets linespread factor to 1.5
-%truefont, % just turn it on when using Windows
-nofont, % remember to manally set the fonts
+%---DELETED---% bachelor,
+% bigskip, % sets linespread factor to 1.5
+%---DELETED---% truefont, % just turn it on when using Windows
+%---DELETED---% nofont, % remember to manally set the fonts
 pdflinks,
-%colorlinks,
+% colorlinks,
 % compact,
 ]{xjtuthesis}
 
 \begin{document}
 
-\includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra//cover.pdf}
+\includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra/cover.pdf}
 \pagenumbering{Roman}
-\includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra//assignment.pdf}
-% \includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra//review.pdf}
-% \includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra//result.pdf}
+\includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra/assignment.pdf}
+% \includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra/review.pdf}
+% \includepdf[pages=-,scale=1,frame=false,offset=0em 4em]{extra/result.pdf}
 \input{meta.tex} % 请修改 meta.tex 中的论文元信息 
 \xjtucinfopage
 \xjtueinfopage
 \xjtutoc
-\clearpage
 % \input{pages/denotation.tex} % 主要符号表，可以没有
 
 \xjtucontent
-
 
 \chapter{绪论}
 
@@ -60,13 +58,11 @@ pdflinks,
 \section{课题背景及意义}
 神经元网络中的时空斑图现象常常与神经信息的分布式传输或神经系统疾病的发生机理密切相关联。
 
-\medskip
 由于生物对象的极端复杂性，生物系统普遍具有多变量、非线性、强耦合的特点。经典Hodgkin-Huxley模型即为利用微分方程组描述神经元细胞跨膜电压与离子电流变化的复杂非线性系统，因此若对其进行数学分析，传统的线性
 理论已不适用，必须采用非线性系统理论对生物模型进行动态分析。在非线性理论中，分岔理论就是很重要的一种理论。
-\medskip
+
 分岔理论反映了流的拓扑结构随参数的变化而引起质的变异，不论在数学理论上还
 是在现实应用中都具有极为重要的意义。
-
 
 噪声在许多非线性动力系统中有着建设性的作用。相关文献已经证明了适量的噪声可以对弱信号进行共振放大，
 这就是所谓的随机共振〔1—3〕。特别地，噪声
@@ -154,7 +150,7 @@ pdflinks,
 Hodgkin-Huxley模型直接反映了细胞膜上离子通道的开闭情况。细胞膜内外电流的流入流出可以简化为一个电容和电阻并联的模型，如下图所示\cite{gerstner2002spiking}：
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=1]{moxingjiantu.pdf}
+\includegraphics[scale=1]{figures/moxingjiantu.pdf}
 \caption{Hodgkin–Huxley模型的简图}
 \end{figure}\\
 在此等效电路中，跨膜流动的电流可以分为两个部分：一部分与膜电容的充电有关；另一部分涉及到不同类型的离子的跨膜流动。离子电流可以进一步分为三部分：钠离子电流$I_{Na}$，钾离子电流$I_K$，和很小的主要由氯离子引起的漏电流$I_l$。
@@ -191,14 +187,6 @@ C_m \dfr{v}{t}=-\dfrac{V-V_{eq}}{R}+\sum_k I_{k}(t)
 \notag \dfr{n}{t} &= \an (V)(1-n)-\bn (V)n 
 \end{align}
 其中下标$K,Na,l$分别代表的是钾离子通道，钠离子通道，以及其他离子通道的情况，而$\gnabar m^3h,\gkbar n^4, \glbar$则分别对应他们的电导率，$\vna, \vk, \vl$则分别对应它们的平衡电位；变量$m,h,n$是假设遵从以上形式的一阶动力系统的电压依赖性门控变量（可以理解为在给定电压下相对应的这三种离子通道的开闭动态过程，因此它们的取值均在$(0,1)$之间）。
-
-
-
-
-
-
-
-
 
 \chapter{Hodgkin-Huxley 模型的单参数Hopf分岔分析}
 
@@ -661,13 +649,10 @@ f _{k _0 j _0\ X} (X _0 + zq + \bar{z}\bar{q}) (w)= \lim _{\epsilon \to 0} \frac
 \end{align*}
 %\dfrac{\partial}{\partial \bar{z}}(\dfrac{\partial G}{\partial w^1},...,\dfrac{\partial G}{\partial w^n}),G^1_{10}=\dfrac{\partial}{\partial z}(\dfrac{\partial G}{\partial w^1},...,\dfrac{\partial G}{\partial w^n})$。
 
-
-
 \chapter{Hodgkin-Huxley模型的相干共振}
 
 在神经科学中，细胞间的信息传递和噪声的影响都是同时存在的，如热的波动
 以及离子通道的随机开关等等，这些都影响着生物信息的传递。噪声在可兴奋神经系统中引起的复杂的动力学现象已经越来越多地吸引了各种学者的介入和研究。之前研究认为随机噪声是对原来系统的破坏，如导致系统的不规律或不稳定，但是越来越多的研究发现噪声在信号的传递和放大中起着极其重要的作用。本章的目的是通过对处于分岔点附近的Hodgkin-Huxley模型施加噪声刺激，分析噪声的作用。
-
 
 \section{HH模型输入为高斯白噪声的相干共振}
 
@@ -721,18 +706,17 @@ Langevan方法的优点是计算量小，且在有些情况下，可以解析求
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.68]{xin_1.jpg}
+\includegraphics[scale=0.68]{figures/xin_1.jpg}
 \caption{$V,m,n,h$函数的螺旋波图样}
 % \label{图}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.68]{xin_2.jpg}
+\includegraphics[scale=0.68]{figures/xin_2.jpg}
 \caption{$V$的取值变化}
 % \label{fig:label}
 \end{figure}
-
 
 \section{HH模型输入为Gamma噪声的相干共振}
 
@@ -787,13 +771,13 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \begin{figure}[!ht]
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_1.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_1.jpg}
 \caption{$r=0$，即所有输入信号均为兴奋}
 % \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_2_1.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_2_1.jpg}
 \caption{$r=0.2$}
 % \label{fig:side:b}
 \end{minipage}
@@ -802,13 +786,13 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \begin{figure}[!ht]
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_5_1.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_5_1.jpg}
 \caption{$r=0.5$}
 % \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_8_1.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_8_1.jpg}
 \caption{$r=0.8$}
 % \label{fig:side:b}
 \end{minipage}
@@ -817,13 +801,13 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \begin{figure}[!ht]
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r1_1.jpg}
+\includegraphics[width=3.0in]{figures/p10r1_1.jpg}
 \caption{$r=1$}
 % \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r2_1.jpg}
+\includegraphics[width=3.0in]{figures/p10r2_1.jpg}
 \caption{$r=2$}
 % \label{fig:side:b}
 \end{minipage}
@@ -836,13 +820,13 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \begin{figure}[!ht]
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_2.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_2.jpg}
 \caption{$r=0$，即所有输入信号均为兴奋}
 % \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_2_2.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_2_2.jpg}
 \caption{$r=0.2$}
 % \label{fig:side:b}
 \end{minipage}
@@ -852,13 +836,13 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \begin{figure}[!ht]
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_5_2.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_5_2.jpg}
 \caption{$r=0.5$}
 % \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r0_8_2.jpg}
+\includegraphics[width=3.0in]{figures/p10r0_8_2.jpg}
 \caption{$r=0.8$}
 % \label{fig:side:b}
 \end{minipage}
@@ -867,13 +851,13 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \begin{figure}[!ht]
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r1_2.jpg}
+\includegraphics[width=3.0in]{figures/p10r1_2.jpg}
 \caption{$r=1$}
 % \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[!ht]{0.5\linewidth}
 \centering
-\includegraphics[width=3.0in]{p10r2_2.jpg}
+\includegraphics[width=3.0in]{figures/p10r2_2.jpg}
 \caption{$r=2$}
 % \label{fig:side:b}
 \end{minipage}
@@ -890,16 +874,15 @@ c_r &= 2 - \sqrt{4+\frac{\lambda^3}{3\alpha^2}+\frac{\alpha^2}{\lambda}-\frac{2\
 \xjtuappendixchapter{外文原文}
 \begin{center}
 \noindent
-\includegraphics[scale=1]{extra/translation/1}\\
-\includegraphics[scale=1]{extra/translation/2}\\
-\includegraphics[scale=1]{extra/translation/3}\\
-\includegraphics[scale=1]{extra/translation/4}\\
-\includegraphics[scale=1]{extra/translation/5}\\
-\includegraphics[scale=1]{extra/translation/6}\\
+\includegraphics[scale=1]{translation/1}\\
+\includegraphics[scale=1]{translation/2}\\
+\includegraphics[scale=1]{translation/3}\\
+\includegraphics[scale=1]{translation/4}\\
+\includegraphics[scale=1]{translation/5}\\
+\includegraphics[scale=1]{translation/6}
 \end{center}
 
 \xjtuappendixchapter{外文翻译: 可激励介质中噪声诱导的螺旋动⼒学}
-% 超过一个 section 时用 Appendices, 否则用 Appendix
 
 \newcommand{\apcite}[1]{\textsuperscript{[#1]}}
 
@@ -980,7 +963,7 @@ $\sigma$ 将被⽤作系统的控制参数。模型满足Neumann
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=1]{fig1.pdf}
+\includegraphics[scale=1]{figures/fig1.pdf}
 \caption{噪声诱导下在$t = 100$个时间单位下激活变量 $u_i(t)$ 的空间分布}
 % \label{fig:label}
 \end{figure}
@@ -995,7 +978,7 @@ $\sigma$ 将被⽤作系统的控制参数。模型满足Neumann
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=1]{fig2.pdf}
+\includegraphics[scale=1]{figures/fig2.pdf}
 \caption{两种不同的噪声强度下未衰减的实现与总的实现个数的比例$f$与扩散系数$D$的关系}
 % \label{fig:label}
 \end{figure}
@@ -1011,7 +994,7 @@ $\sigma$ 将被⽤作系统的控制参数。模型满足Neumann
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.68]{fig3.png}
+\includegraphics[scale=0.68]{figures/fig3.png}
 \caption{螺旋波分裂会产生复杂的螺旋动力学}
 % \label{fig:label}
 \end{figure}
@@ -1034,7 +1017,7 @@ $\sigma$ 将被⽤作系统的控制参数。模型满足Neumann
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=1]{fig4.pdf}
+\includegraphics[scale=1]{figures/fig4.pdf}
 \caption{连续时空集群的统计性质}
 % \label{fig:label}
 \end{figure}
@@ -1070,9 +1053,6 @@ General de Investigación Cientıfica y Técnica（西班⽛，项⽬PB96-0241�
 
 \xjtuendappendix
 
-\xjtuspchapter{致谢}{致\qquad 谢}
-\iffalse
-本文是在西安交通大学的李东升老师与佐治亚理工学院的林治武老师的共同指导下完成的, 受到美国国家科学基金会NSF (grantDMS-1411803)项目的资助. 林治武老师为论文的选题, 文献资料的选择提供了十分有益的指导, 并十分关照本人的工作进展, 使得论文得以顺利完成. 在佐治亚理工学院实习期间, 林治武老师组织的丰富的讨论班与讲座也给予了我很多启发. 同时也需要在此感谢学校拔尖办给予我此次出访机会, 感谢佐治亚理工学院的同僚们的帮助, 让我能够进行这样一项很有意义的科研. 另外, 本毕业设计虽然是在外校完成的, 李东升老师仍然给予了相当细致的关照与充分的支持, 本文的完成离不开他的帮助. 谨向林治武老师与李东升老师致以衷心的感谢! 
-\fi
+\xjtuacknowledgement
 
 \end{document}
