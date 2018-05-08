@@ -106,6 +106,13 @@
 % titleformat
 \RequirePackage{titlesec,titletoc}
 
+\AtBeginDocument{
+	\renewcommand{\d}{\mathrm d}
+	\newcommand{\ud}{\,\d}
+	\newcommand*{\dfr}[2]{\frac{\d #1}{\d #2}}
+	\newcommand*{\pfr}[2]{\frac{\partial #1}{\partial #2}}
+}
+
 % l10n here
 \renewcommand{\ALG@name}{算法}
 \renewcommand{\tablename}{表}
@@ -128,8 +135,14 @@
 \newcommand{\thesis}{thesis}
 \newcommand{\Master}{Master}
 
+\let\@oldparen\paren
+\def\paren{\@ifstar{\@oldparen}{\@oldparen*}}
+\let\@oldbkt\bkt
+\def\bkt{\@ifstar{\@oldbkt}{\@oldbkt*}}
+
 \ifxjtu@pdflinks
-    \RequirePackage{hyperref}
+    \RequirePackage[unicode=true]{hyperref}
+    \RequirePackage{bookmark}
     \ifxjtu@colorlinks
         \hypersetup{
             bookmarksnumbered=true,
@@ -454,34 +467,34 @@
 \newcommand{\xjtuappendixchapter}[1]{
     \stepcounter{chapter}
     \chapter*{\thechapter\quad#1}
-    \addcontentsline{toc}{chapter}{\thechapter\quad #1}
+    \addcontentsline{toc}{chapter}{\thechapter\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixsection}[1]{
     \stepcounter{section}
     \section*{#1}
-    \addcontentsline{toc}{section}{\thesection\quad #1}
+    \addcontentsline{toc}{section}{\thesection\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixsubsection}[1]{
     \stepcounter{subsection}
     \subsection*{#1}
-    \addcontentsline{toc}{subsection}{\thesubsection\quad #1}
+    \addcontentsline{toc}{subsection}{\thesubsection\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixsubsubsection}[1]{
     \stepcounter{subsubsection}
     \subsubsection*{#1}
-    \addcontentsline{toc}{subsubsection}{\thesubsubsection\quad #1}
+    \addcontentsline{toc}{subsubsection}{\thesubsubsection\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixechapter}[1]{
     \echapter*{\thechapter\quad#1}
-    \addcontentsline{toe}{chapter}{\thechapter\quad #1}
+    \addcontentsline{toe}{chapter}{\thechapter\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixesection}[1]{
     \esection*{#1}
-    \addcontentsline{toe}{section}{\thesection\quad #1}
+    \addcontentsline{toe}{section}{\thesection\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixesubsection}[1]{
     \esubsection*{#1}
-    \addcontentsline{toe}{subsection}{\thesubsection\quad #1}
+    \addcontentsline{toe}{subsection}{\thesubsection\texorpdfstring{\quad}{\ }#1}
 }
 \newcommand{\xjtuappendixesubsubsection}[1]{
 }
@@ -531,7 +544,7 @@
     \type{本科}
     \renewcommand\xjtucinfopage{
         \chaptermark{摘\quad 要}
-        {\noindent \bf
+        {\noindent \sffamily
 		论文题目： \xjtu@ctitle\\
         学生姓名： \xjtu@cauthor\\
         指导教师： \xjtu@csupervisor\\
@@ -546,11 +559,13 @@
 
         \mbox{}
 
-        {\wuhao \noindent \bf
-        关键词：}
-        \xjtu@ckeywords
+        {\wuhao \noindent
+            {\sffamily 关键词：}
+            \xjtu@ckeywords
+        }
         \clearpage
     }
+    
     \renewcommand\xjtueinfopage{
         \chaptermark{ABSTRACT}
         \noindent {\bf
@@ -573,7 +588,7 @@
 
         \mbox{ }
 
-        {\wuhao\noindent
+        {\wuhao \noindent
             {\bf KEY WORDS: }
             \xjtu@ekeywords
         }
@@ -944,6 +959,12 @@
 \newtheorem{remark}{注释}[chapter]
 \newtheorem{problem}{问题}[chapter]
 \newtheorem{conjecture}{猜想}[chapter]
+\newtheorem{thm}{定理}[section]
+\newtheorem{cor}[thm]{推论}
+\newtheorem{lem}[thm]{引理}
+\newtheorem{prop}[thm]{命题}
+\newtheorem{defn}[thm]{定义}
+\newenvironment{proof}[1][证明]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
 
 \RequirePackage[shortlabels]{enumitem}
 \setenumerate[1]{1),fullwidth,itemindent=\parindent,listparindent=\parindent,itemsep=0.05\baselineskip,partopsep=0pt,parsep=0ex,topsep=0.1\baselineskip}
